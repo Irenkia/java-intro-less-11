@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 class PhoneBookTest {
     private String filePath = "src/test/resources/phoneBook.txt";
@@ -30,11 +31,13 @@ class PhoneBookTest {
         System.out.println("Add contacts and save to file");
 
         //when
-        phoneBook.addNewContact("Jack Taker", "1234567", "taker@gmail.com");
-        phoneBook.addNewContact("Brian Welsh", "2345678", "welsh@gmail.com");
-        phoneBook.addNewContact("Steven Gray", "3456789", "gray@gmail.com");
-        phoneBook.addNewContact("Mark Kim", "4567891", "kim@gmail.com");
-        phoneBook.addNewContact("Larry Lopez", "5678912", "lopez@gmail.com");
+        phoneBook.addNewContact("Jack Taker", Optional.ofNullable("1234567"), "taker@gmail.com");
+        phoneBook.addNewContact("Brian Welsh", Optional.ofNullable("2345678"), "welsh@gmail.com");
+        phoneBook.addNewContact("Steven Gray", Optional.ofNullable("3456789"), "gray@gmail.com");
+        phoneBook.addNewContact("Mark Kim", Optional.ofNullable("4567891"), "kim@gmail.com");
+        phoneBook.addNewContact("Larry Lopez", Optional.ofNullable("5678912"), "lopez@gmail.com");
+        phoneBook.addNewContact("Adam Miller", Optional.ofNullable(null), "kim@gmail.com");
+        phoneBook.addNewContact("Eric Clark", Optional.ofNullable(null), "lopez@gmail.com");
 
         //then
         System.out.println("\tPrint text from file : ");
@@ -81,6 +84,18 @@ class PhoneBookTest {
     public void mustFindByName() {
         //given
         String name = "Steven Gray";
+
+        //when
+        List<String> valuesList = phoneBook.findByName(name);
+
+        //then
+        System.out.println(valuesList);
+    }
+
+    @Test
+    public void mustFindByName_whenPhoneNumberIsNull() {
+        //given
+        String name = "Adam Miller";
 
         //when
         List<String> valuesList = phoneBook.findByName(name);

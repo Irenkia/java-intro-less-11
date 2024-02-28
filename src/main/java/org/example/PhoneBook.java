@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PhoneBook {
     private String filePath = "src/test/resources/phoneBook.txt";
@@ -25,14 +22,14 @@ public class PhoneBook {
         this.phonebook = phonebook;
     }
 
-    public boolean addNewContact(String fullName, String phoneNumber, String address) {
-        if (fullName == null || phoneNumber == null)
-            throw new NullPointerException("name and phone number cannot be null");
-        if (fullName.isEmpty() || phoneNumber.isEmpty())
-            throw new IllegalArgumentException("name and phone number cannot be empty");
+    public boolean addNewContact(String fullName, Optional<String> phoneNumber, String address) {
+        if (fullName == null)
+            throw new NullPointerException("name cannot be null");
+        if (fullName.isEmpty())
+            throw new IllegalArgumentException("name cannot be empty");
         Map<String, Contact> mapContacts = getPhonebook();
         if (!mapContacts.containsKey(fullName)) {
-            mapContacts.put(fullName, new Contact(fullName, phoneNumber, address));
+            mapContacts.put(fullName, new Contact(fullName, Optional.of(String.valueOf(phoneNumber)), address));
             setPhonebook(mapContacts);
             FileService.writeToFile(filePath, mapContacts);
             return true;
