@@ -1,0 +1,7 @@
+Brian Welsh : Contact{fullName='Brian Welsh', phoneNumber='Optional[Optional[2345678]]', address='welsh@gmail.com'}
+Jack Taker : Contact{fullName='Jack Taker', phoneNumber='Optional[Optional[1234567]]', address='taker@gmail.com'}
+Adam Miller : Contact{fullName='Adam Miller', phoneNumber='Optional[Optional.empty]', address='kim@gmail.com'}
+Mark Kim : Contact{fullName='Mark Kim', phoneNumber='Optional[Optional[4567891]]', address='kim@gmail.com'}
+Larry Lopez : Contact{fullName='Larry Lopez', phoneNumber='Optional[Optional[5678912]]', address='lopez@gmail.com'}
+Steven Gray : Contact{fullName='Steven Gray', phoneNumber='Optional[Optional[3456789]]', address='gray@gmail.com'}
+Eric Clark : Contact{fullName='Eric Clark', phoneNumber='Optional[Optional.empty]', address='lopez@gmail.com'}
